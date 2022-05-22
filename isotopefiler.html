@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .grid-item { width: 25%; }
+.grid-item--width2 { width: 50%; }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Isotope Plugin</title>
+</head>
+<body>
+    <div class="button-group filter-button-group">
+        <button class="btn" data-filter="*">show all</button>
+        <button class="btn" data-filter=".web">web development</button>
+        <button class="btn" data-filter=".seo">seo</button>
+        <button class="btn" data-filter=".graphics">graphics</button>
+      </div>
+      <div class="portfolio-item">
+          <div class="item web">
+              web project 1
+          </div>
+          <div class="item seo">
+            seo project 1
+        </div>
+        <div class="item graphics">
+            graphics project 1
+        </div>
+          
+      </div>
+
+      <div class="portfolio-item">
+        <div class="item web">
+            web project 2
+        </div>
+        <div class="item seo">
+          seo project 2
+      </div>
+      <div class="item graphics">
+          graphics project 3
+      </div>
+        
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+    $(document).ready(()=>{
+        $('.portfolio-item').isotope({
+  // options
+  itemSelector: '.item',
+  layoutMode: 'fitRows'
+});
+
+   $('.filter-button-group').on( 'click', 'button', function() {
+  var filterValue = $(this).attr('data-filter');
+   console.log(filterValue);
+  $('.portfolio-item').isotope({ filter: filterValue });
+});
+    
+})
+
+</script>
+</html>
